@@ -13,6 +13,11 @@ class Blog extends Model
         'title',
         'intro',
         'body',
+        'user_id',
     ];
+
+    public function author(){
+       return $this->hasOne(User::class,'id', 'user_id');
+    }
 
 }

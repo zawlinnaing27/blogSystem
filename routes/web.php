@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogDetailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\App\Models\Blog;
@@ -16,3 +17,5 @@ use Illuminate\App\Models\Blog;
 */
 
 Route::get('/',UserController::class)->name('blogs');
+
+Route::get('blog-detai,{blog}',BlogDetailController::class)->name('blog:detail');
