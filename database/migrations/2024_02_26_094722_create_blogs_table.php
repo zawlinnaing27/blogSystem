@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('user_id');
+            $table->foreignId('category_id');
             $table->text('intro');
             $table->text('body');
             $table->timestamps();

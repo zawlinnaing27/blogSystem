@@ -14,10 +14,17 @@ class Blog extends Model
         'intro',
         'body',
         'user_id',
+        'category_id',
     ];
 
     public function author(){
        return $this->hasOne(User::class,'id', 'user_id');
+
+
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
 }

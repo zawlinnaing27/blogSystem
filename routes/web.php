@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\AllBlogController;
 use App\Http\Controllers\BlogDetailController;
+use App\Http\Controllers\filterController;
+use App\Http\Controllers\FilterController as ControllersFilterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\App\Models\Blog;
@@ -19,3 +22,9 @@ use Illuminate\App\Models\Blog;
 Route::get('/',UserController::class)->name('blogs');
 
 Route::get('blog-detai,{blog}',BlogDetailController::class)->name('blog:detail');
+
+Route::get('all-blogs',AllBlogController::class)->name('all:blogs');
+
+Route::get('filter',filterController::class)->name('filters');
+
+
