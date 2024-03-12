@@ -9,20 +9,19 @@ class AllBlogController extends Controller
 {
    public function __invoke(Request $request){
 
-    $blogs = Blog::with('author','category')
-
+    $blogs = Blog::when(request('search'),function($query,$search) {
+                 $query->where('title','LIKE','%'.$search.'%');
+              })
+              ->when(request('search'),function($query,$search) {
+                  $query->where('body','LIKE','%'.$search.'%');
+              })
+            ->with('author','category')
             ->paginate(3)
             ->withQueryString();
-
-
-
     return view('allBlogs',[
         'blogs' => $blogs,
         'categories' => Category::all(),
+
     ]);
-
-
    }
-
-
 }

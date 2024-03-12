@@ -1,6 +1,6 @@
 @props(['blogs'])
 
-@foreach ($blogs as $blog )
+@forelse ($blogs as $blog )
 <div class="col-md-4 mb-4 ">
 
   <div class="card h-100">
@@ -28,9 +28,12 @@
       <p class="card-text">
         {{$blog->intro}}
       </p>
+      
       <a href="{{ route('blog:detail', ['blog' => $blog->id ]) }}" class="btn btn-primary ">Read More</a>
     </div>
   </div>
 
 </div>
-@endforeach
+@empty
+<h1 class="text-center">There is no blog</h1>
+@endforelse

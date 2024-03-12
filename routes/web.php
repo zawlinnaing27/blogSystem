@@ -28,3 +28,4 @@ Route::get('all-blogs',AllBlogController::class)->name('all:blogs');
 Route::get('filter',filterController::class)->name('filters');
 
 
+

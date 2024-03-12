@@ -3,7 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Blog;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +17,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(10)->create();
+        User::truncate();
+        Blog::truncate();
+        Category::truncate();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $mgmg = User::factory()->create(['name'=>'mgmg','username'=>'mgmg']);
+        $aungaung= User::factory()->create(['name'=>'aungaung','username'=>'aungaung']);
+        $outdoor= Category::factory()->create(['name'=>'outdoor']);
+        $indoor= Category::factory()->create(['name'=>'indoor']);
+
+        Blog::factory(2)->create(['category_id'=>$indoor->id,'user_id'=>$mgmg->id]);
+        Blog::factory(2)->create(['category_id'=>$outdoor->id,'user_id'=>$aungaung->id]);
+
+
     }
 }

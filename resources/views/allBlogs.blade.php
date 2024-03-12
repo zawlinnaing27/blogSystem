@@ -3,7 +3,8 @@
 
 @section('content')
         {{-- blogFilter --}}
-        <x-blogFilter :categories="$categories" />
+        <x-blogFilter :categories="$categories"  />
+        <x-searchSection />
 
     <div class="row">
         {{-- All Blog List --}}

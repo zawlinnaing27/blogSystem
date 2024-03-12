@@ -31,7 +31,10 @@
   </section>
 
  <section class="container text-center" id="blogs">
-                <x-blogFilter :categories="$categories" />
+    <x-blogFilter :categories="$categories"
+                  :currentCategory="$currentCategory" />
+    <x-searchSection />
+
     <div class="row">
          <x-allBlogCard :blogs="$blogs"  />
     </div>

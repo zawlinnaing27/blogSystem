@@ -10,9 +10,16 @@ class FilterController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $categoryId = $request->input('categoryId');
 
         $userId = $request->get('userId');
+        $categoryId = $request->input('categoryId');
+        $currentCategory = null;
+        if ($categoryId) {
+            $currentCategory = Category::find($categoryId);
+        }
+
+
+
 
        $blogs = Blog::with('author','category');
        if($categoryId){
@@ -25,6 +32,8 @@ class FilterController extends Controller
             });
        }
 
+
+
        $blogs = $blogs ->paginate(3)
        ->withQueryString();
 
@@ -32,6 +41,7 @@ class FilterController extends Controller
     return view('blogs',[
         'blogs'=> $blogs,
         'categories' => Category::all(),
+        'currentCategory' => $currentCategory
     ]);
 
     }

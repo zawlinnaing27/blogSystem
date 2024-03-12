@@ -1,10 +1,10 @@
 
-@props(['categories'])
+@props(['categories','currentCategory'])
 <h1 class="d-flex justify-content-center display-5 fw-bold my-4">Blogs</h1>
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center mb-3">
         <div class="dropdown">
             <span class="btn btn-outline-primary dropdown-toggle"  role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-              Filter By Category
+              {{isset($currentCategory) ? $currentCategory->name : 'Filter By Category'}}
             </span>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
@@ -13,9 +13,12 @@
             @endforeach
               </ul>
           </div>
-      {{-- <select name="" id="" class="p-1 rounded-pill mx-3">
+
+    </div>
+
+      {{-- {{-- <select name="" id="" class="p-1 rounded-pill mx-3">
         <option value="">Filter by Tag</option>
-      </select> --}}
+      </select>
     </div>
     <form action="" class="my-3">
       <div class="input-group mb-3">
@@ -33,4 +36,4 @@
           Search
         </button>
       </div>
-    </form>
+    </form> --}}
