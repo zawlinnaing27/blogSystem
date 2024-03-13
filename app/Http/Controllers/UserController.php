@@ -21,6 +21,16 @@ class UserController extends Controller
                     $query->where('title','LIKE','%'.$search.'%')
                     ->orwhere('body', 'LIKE','%'.$search.'%');
                 })
+                ->when(request('categoryId')?? false , function($query,$categoryId) {
+                    $query->whereHas('category', function ($query) use ( $categoryId) {
+                        $query->where('id', $categoryId);
+                    });
+                })
+                ->when(request('userId')?? false, function($query,$userId){
+                    $query->whereHas('author', function ($query) use ( $userId) {
+                        $query->where('id', $userId);
+                    });
+                })
                 ->with('author','category')
                 ->paginate(3)
                 ->withQueryString();

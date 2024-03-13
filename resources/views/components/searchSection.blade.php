@@ -1,5 +1,19 @@
 <form action="{{route('blogs')}}" class="my-3" method="get">
     <div class="input-group mb-3">
+        @if(request('userId'))
+        <input
+        name="userId"
+        type="hidden"
+        value="{{request('userId')}}"
+      />
+      @endif
+      @if(request('categoryId'))
+        <input
+        name="categoryId"
+        type="hidden"
+        value="{{request('categoryId')}}"
+      />
+      @endif
       <input
         name="search"
         type="text"

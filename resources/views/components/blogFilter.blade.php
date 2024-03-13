@@ -7,9 +7,13 @@
               {{isset($currentCategory) ? $currentCategory->name : 'Filter By Category'}}
             </span>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
+                <li><a class="dropdown-item" href="{{route('blogs')}}" >
+                    all</a></li>
             @foreach ( $categories as  $category)
-                <li><a class="dropdown-item" href="{{route('filters', ['categoryId' => $category->id])}}"  >{{$category->name}}</a></li>
+                <li><a class="dropdown-item" href="{{route('blogs', ['categoryId' => $category->id])}}
+                    {{request('search')? '&search='.request('search') : ''}}
+                    {{request('userId')? '&search='.request('userId') : ''}}"  >
+                    {{$category->name}}</a></li>
             @endforeach
               </ul>
           </div>

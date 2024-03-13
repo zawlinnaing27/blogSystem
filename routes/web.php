@@ -25,7 +25,7 @@ Route::get('blog-detai,{blog}',BlogDetailController::class)->name('blog:detail')
 
 Route::get('all-blogs',AllBlogController::class)->name('all:blogs');
 
-Route::get('filter',filterController::class)->name('filters');
+
 
 
 
