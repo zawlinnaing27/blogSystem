@@ -25,7 +25,22 @@
         </div>
       </div>
     </div>
-        
+    <section class="container">
+            <div class="col-md-8 mx-auto">
+                <x-card-wrapper class="bg-secondary">
+                <form>
+                    <div class="mb-3">
+
+                     <textarea class="form-control border border-0" name="" id="" cols="10" rows="5" placeholder="Say Something..."></textarea>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+                </x-card-wrapper>
+            </div>
+    </section >
+
                 <x-comment  :comments="$blog->comments"/>
     <!-- subscribe new blogs -->
                 <x-subscribe />
