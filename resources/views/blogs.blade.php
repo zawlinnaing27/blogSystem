@@ -3,6 +3,9 @@
 @section('title', 'Page Title')
 
 @section('content')
+@if (session('success'))
+<div class="alert alert-success text-center">{{session('success')}}</div>
+@endif
  <!-- hero section -->
  <section class="px-4 py-5 my-5 text-center">
         <img class="d-block mx-auto mb-4" src="/image/logo.png" alt="" width="250" />

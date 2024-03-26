@@ -9,13 +9,6 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
-        'title',
-        'intro',
-        'body',
-        'user_id',
-        'category_id',
-    ];
 
     public function author(){
        return $this->hasOne(User::class,'id', 'user_id');
@@ -26,5 +19,10 @@ class Blog extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+
+    public function comments()  {
+        return $this->hasMany(Comment::class);
+}
 
 }

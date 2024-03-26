@@ -17,23 +17,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'is_admin',
-        'password',
-        'username'
-    ];
+    
 
 
 
-    public function categories(){
-            $this->hasMany(Category::class);
-    }
-
-    public function blogs(){
-        $this->hasMany(Blog::class);
-    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -54,6 +41,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function blogs(){
+        $this->hasMany(Blog::class);
+    }
+
+    public function getNameAttribute($value)
+    {
+            return ucwords($value);
+    }
+
+    public function setPasswordAttribute($value) {
+        $this->attributes['password']=bcrypt($value);
+    }
 
 
 }

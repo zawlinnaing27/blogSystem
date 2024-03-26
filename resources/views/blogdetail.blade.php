@@ -25,7 +25,8 @@
         </div>
       </div>
     </div>
-
+        
+                <x-comment  :comments="$blog->comments"/>
     <!-- subscribe new blogs -->
                 <x-subscribe />
     <section class="blogs_you_may_like">
