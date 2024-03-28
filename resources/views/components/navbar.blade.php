@@ -10,7 +10,9 @@
         <a href="/login" class="nav-link">Login</a>
 
         @else
+
         <a href="" class="nav-link">Welcome {{auth()->user()->name}}</a>
+        <img class="rounded-circle" width="50" height="50" src="{{auth()->user()->profile_pic}}" alt="">
         <form method="Post" action="/logout" >
             @csrf
             <button type='submit' href="" class="nav-link btn btn-link">Logout</button>

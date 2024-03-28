@@ -11,30 +11,25 @@
                                     <div class="mb-3">
                                         <label for="exampleInputName" class="form-label"> Name</label>
                                         <input value="{{old('name')}}" type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" name='name'>
-                                        @error('name')
-                                        <p class="text-danger">{{$message}}</p>
-                                        @enderror
-                                      </div>
+                                        <x-error name="name"/>
+                                        </div>
                                     <div class="mb-3">
                                         <label for="exampleInputUserName" class="form-label">User Name</label>
                                         <input  value="{{old('username')}}" type="text" class="form-control" id="exampleInputUserName" aria-describedby="emailHelp" name='username'>
-                                        @error('username')
-                                        <p class="text-danger">{{$message}}</p>
-                                        @enderror
+                                        <x-error name="username"/>
+
                                       </div>
                                     <div class="mb-3">
                                       <label for="exampleInputEmail1" class="form-label">Email address</label>
                                       <input  value="{{old('email')}}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='email'>
-                                      @error('email')
-                                        <p class="text-danger">{{$message}}</p>
-                                        @enderror
+                                      <x-error name="email"/>
+
                                     </div>
                                     <div class="mb-3">
                                       <label for="exampleInputPassword1" class="form-label">Password</label>
                                       <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                                      @error('password')
-                                      <p class="text-danger">{{$message}}</p>
-                                      @enderror
+                                      <x-error name="password"/>
+
                                     </div>
                                     <button  type="submit" class="btn btn-primary ">Submit</button>
                                   </form>

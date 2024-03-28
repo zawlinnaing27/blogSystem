@@ -49,7 +49,6 @@ class AuthController extends Controller
            ]);
 
 
-
           if(auth()->attempt($user)){
             return redirect('/')->with('success','Welcome back');
           }else{
