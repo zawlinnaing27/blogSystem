@@ -20,7 +20,7 @@
  </div>
 </section >
 @if ($blog->comments->count())
-          <x-comment  :comments="$blog->comments"/>
+          <x-comment  :comments="$blog->comments()->latest()->paginate(3)"/>
           @endif
 @else
 <p class="text-center">

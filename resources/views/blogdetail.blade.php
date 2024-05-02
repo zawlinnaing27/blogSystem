@@ -11,14 +11,27 @@
         alt="..."
       />
           <h3 class="my-3 ">{{$blog->title}}</h3>
-          <p class="fs-6 text-secondary">
-            {{$blog->name}}
-            <span> - {{$blog->created_at->diffForHumans()}}</span>
-          </p>
           <div class="tags my-3">
             <span class="badge bg-primary">{{$blog->category->name}}</span>
 
           </div>
+          <p class="fs-6 text-secondary">
+            {{$blog->name}}
+            <span> - {{$blog->created_at->diffForHumans()}}</span>
+          </p>
+          <div  class="tags my-3">
+                  <form action="{{route('subscriptionHandler',['blog'=>$blog])}}" method="POST">
+                    @csrf
+                   @auth
+                   @if (auth()->user()->isSubscribed($blog) )
+                   <button  class="btn btn-danger">Unsubscribe</button>
+                   @else
+                   <button  class="btn btn-success">Subscribe</button>
+                   @endif
+                   @endauth
+                  </form>
+          </div>
+
           <p class="lh-md">
             {{$blog->body}}
           </p>
@@ -27,7 +40,7 @@
     </div>
                     <x-comment-form :blog="$blog"/>
     <!-- subscribe new blogs -->
-                <x-subscribe />
+
     <section class="blogs_you_may_like">
 
                     <x-blog_you_may_like_section :randomBlogs="$randomBlogs" />
@@ -38,7 +51,7 @@
 
 
 
-      {{-- <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" >
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" >
         <div class="carousel-indicators">
           @foreach ($blogs->chunk(1) as $key => $blogChunk)
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}" aria-current="{{ $key == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $key + 1 }}"></button>
@@ -75,7 +88,7 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
- --}}
+
 
 @endsection
 

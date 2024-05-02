@@ -11,8 +11,6 @@
         <x-allBlogCard :blogs="$blogs" />
     </div>
 
-    <x-subscribe/>
-
         <x-pagination  :blogs="$blogs" />
 
 

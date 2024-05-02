@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SubscriberMail;
 use App\Models\Blog;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 
 class CommentController extends Controller
 {
@@ -20,8 +23,15 @@ class CommentController extends Controller
         'body'=>request('body')
        ]);
 
+
        Comment::create($comment);
-       return redirect()->back()->with('success','comment has been success');
+
+       //mail
+       $subscribers = $blog->subscribers->filter(fn ($subscriber) => $subscriber->id != auth()->id());
+   $subscribers->each(function ($subscriber) use ($blog){
+     Mail::to($subscriber->email)->send(new SubscriberMail($blog));
+    });
+       return redirect('/blog-detai,'.$blog->id);
     }
 
     }

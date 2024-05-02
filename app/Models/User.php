@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    
+
 
 
 
@@ -54,6 +54,15 @@ class User extends Authenticatable
     public function setPasswordAttribute($value) {
         $this->attributes['password']=bcrypt($value);
     }
+    public function subscribedBlogs()  {
+            return $this->belongsToMany(Blog::class);
+    }
+
+    public function isSubscribed($blog) {
+        return auth()->user()->subscribedBlogs &&
+        auth()->user()->subscribedBlogs->contains('id',$blog->id);
+    }
+
 
 
 }

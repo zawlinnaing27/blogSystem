@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',UserController::class)->name('blogs');
-Route::get('blog-detai,{blog}',BlogDetailController::class)->name('blog:detail');
+Route::get('blog-detai/{blog}',[BlogDetailController::class,'index'])->name('blog:detail');
 
-Route::post('/blog-detail/comment,{blog}',[CommentController::class,'store'])->name('blog:comment');
+Route::post('/blog-detail/comment/{blog}',[CommentController::class,'store'])->name('blog:comment');
 
 Route::get('all-blogs',AllBlogController::class)->name('all:blogs');
 
@@ -30,8 +30,9 @@ Route::get('/register',[AuthController::class,'create'])->middleware('guest')->n
 Route::post('/register',[AuthController::class,'store'])->middleware('guest')->name('store');
 Route::post('/logout',[AuthController::class,'logout'])->name('logout');
 Route::get('/login',[AuthController::class,'login'])->middleware('guest')->name('login');
-Route::post('/login',[AuthController::class,'post_login'])->middleware('guest')->name('login');
+Route::post('/login',[AuthController::class,'post_login'])->middleware('guest')->name('post_login');
 
+Route::post('/subscription/{blog}',[BlogDetailController::class,'subscriptionHandler'])->name('subscriptionHandler');
 
 
 

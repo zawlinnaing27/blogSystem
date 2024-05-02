@@ -16,19 +16,12 @@
       </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <a
-          href="#subscribe"
-          type="button"
-          class="btn btn-primary btn-lg px-4 gap-3"
-        >
-          Subscribe Now
-        </a>
-        <a
           type="button"
           class="btn btn-outline-secondary btn-lg px-4"
           href="{{route('all:blogs')}}"
         >
           Read Blogs
-        </a>
+    </a>
       </div>
     </div>
   </section>
@@ -42,7 +35,7 @@
          <x-allBlogCard :blogs="$blogs"  />
     </div>
   </section>
-  <x-subscribe/>
+
 
        <x-pagination :blogs="$blogs" />
 
