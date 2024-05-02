@@ -53,13 +53,13 @@
 
       <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" >
         <div class="carousel-indicators">
-          @foreach ($blogs->chunk(1) as $key => $blogChunk)
+          @foreach ($randomBlogs->chunk(1) as $key => $blogChunk)
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}" aria-current="{{ $key == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $key + 1 }}"></button>
           @endforeach
         </div>
 
         <div class="carousel-inner">
-          @foreach ($blogs->chunk(1) as $key => $blogCollections )
+          @foreach ($randomBlogs->chunk(1) as $key => $blogCollections )
 
 
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" data-bs-interval="5000">

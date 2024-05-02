@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',UserController::class)->name('blogs');
-Route::get('blog-detai/{blog}',[BlogDetailController::class,'index'])->name('blog:detail');
+Route::get('blog-detail/{blog}',[BlogDetailController::class,'index'])->name('blog:detail');
 
 Route::post('/blog-detail/comment/{blog}',[CommentController::class,'store'])->name('blog:comment');
 

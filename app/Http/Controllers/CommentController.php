@@ -31,8 +31,11 @@ class CommentController extends Controller
    $subscribers->each(function ($subscriber) use ($blog){
      Mail::to($subscriber->email)->send(new SubscriberMail($blog));
     });
-       return redirect('/blog-detai,'.$blog->id);
+    // return redirect('blog-detail,'.$blog->id);
+    return redirect()->back();
+
     }
+
 
     }
 

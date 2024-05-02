@@ -10,7 +10,7 @@ class BlogDetailController extends Controller
 {
     public function index(Blog $blog)
     {
-        // $blogs = Blog::with('author','category')->get();
+        $blogs = Blog::with('author','category')->get();
     $randomBlogs = Blog::with('author','category')->inRandomOrder()->take(3)->get();
 
         return view('blogdetail',[
