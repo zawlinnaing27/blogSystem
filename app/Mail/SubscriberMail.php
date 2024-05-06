@@ -28,8 +28,9 @@ class SubscriberMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Subscriber Mail')
-                    ->view('mail.subscriberMail')
-                    ->with('blog', $this->blog);
+        return $this->view('mail.subscriberMail',[
+            'blog' => $this->blog
+        ]);
+
     }
 }
