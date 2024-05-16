@@ -5,8 +5,8 @@
 
   <div class="card h-100">
     <img
-      src="https://creativecoder.s3.ap-southeast-1.amazonaws.com/blogs/GOLwpsybfhxH0DW8O6tRvpm4jCR6MZvDtGOFgjq0.jpg"
-      class="card-img-top"
+      src='{{asset("storage/$blog->thumbnail")}}'
+      class="card-img-top  h-100 rounded"
       alt="..."
     />
     <div class="card-body text-center">

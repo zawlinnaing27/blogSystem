@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AllBlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogDetailController;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',UserController::class)->name('blogs');
 Route::get('blog-detail/{blog}',[BlogDetailController::class,'index'])->name('blog:detail');
 
+
 Route::post('/blog-detail/comment/{blog}',[CommentController::class,'store'])->name('blog:comment');
 
 Route::get('all-blogs',AllBlogController::class)->name('all:blogs');
@@ -33,6 +35,11 @@ Route::get('/login',[AuthController::class,'login'])->middleware('guest')->name(
 Route::post('/login',[AuthController::class,'post_login'])->middleware('guest')->name('post_login');
 
 Route::post('/subscription/{blog}',[BlogDetailController::class,'subscriptionHandler'])->name('subscriptionHandler');
+
+
+
+Route::get('/blogs/create',[AdminBlogController::class,'creat'])->middleware('admin')->name('blog:create');
+Route::post('/blogs/store',[AdminBlogController::class,'store'])->middleware('admin')->name('blog:store');
 
 
 

@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Blog;
 use App\Models\User;
-
 
 class BlogDetailController extends Controller
 {
@@ -33,4 +31,9 @@ class BlogDetailController extends Controller
 
 
     }
+
+
+
+
+
 }

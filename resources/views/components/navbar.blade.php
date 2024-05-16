@@ -23,20 +23,20 @@
     </div>
   </nav> --}}
 
-  <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-    <div class="container-fluid ms-5">
-      <a class="navbar-brand" href="/">Safe__Zone</a>
+  <nav class="navbar navbar-expand-lg bg-dark fixed-top ">
+    <div class="container-fluid ms-5 text-info">
+      <a class="navbar-brand text-info" href="/">Safe__Zone</a>
       <div class="collapse navbar-collapse mt-2" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="navbar-text">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <li class="navbar-text ">
+            <a class="nav-link active text-info" aria-current="page" href="{{route('blogs')}}">Home</a>
           </li>
           <li class="navbar-text">
-            <a class="nav-link" href="all-blogs">Blogs</a>
+            <a class="nav-link text-info"  href="{{route('all:blogs')}}">Blogs</a>
           </li>
 
           <li class="navbar-text ">
-            <a href="#subscribe" class="nav-link">Subscribe</a>
+            <a href="#subscribe " class="nav-link text-info">Subscribe</a>
           </li  >
         </ul>
             <div class="d-flex me-5">
@@ -48,9 +48,15 @@
                         <a href="/login" class="nav-link">Login</a>
                     </div>
             @else
+            @if(Auth::check() && Auth::user()->is_admin == '1')
+            <div class="nav-item me-3">
+                <a href="/blogs/create" class="nav-link ">Add Blog</a>
+               </div>
+            @endif
            <div class="nav-item me-3">
             <a href="" class="nav-link ">Welcome {{auth()->user()->name}}</a>
            </div>
+
            <div class="nav-item me-3">
             <img class="rounded-circle" width="50" height="50" src="{{auth()->user()->profile_pic}}" alt="">
            </div>
@@ -59,7 +65,9 @@
                 <button type='submit' href="" class="nav-link btn btn-link">Logout</button>
             </form>
             @endif
+
             </div>
+
       </div>
     </div>
 
